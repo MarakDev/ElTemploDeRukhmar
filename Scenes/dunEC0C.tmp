@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdeu64g207y"]
+
+[ext_resource type="TileSet" uid="uid://b8y2kstu87cd4" path="res://Art/TileMaps/TilesSet.tres" id="1_atxjs"]
+[ext_resource type="PackedScene" uid="uid://cvp2bami318lp" path="res://Scenes/player.tscn" id="1_y6f4q"]
+[ext_resource type="PackedScene" uid="uid://cq3p7q3dgpa5d" path="res://Scenes/botas.tscn" id="3_owmoq"]
+[ext_resource type="PackedScene" uid="uid://bit5laecosqjs" path="res://Scenes/antorcha.tscn" id="4_de0t0"]
+[ext_resource type="Texture2D" uid="uid://ba41fxp126sbp" path="res://Art/Sprites/Brujula.png" id="4_umtw8"]
+[ext_resource type="Texture2D" uid="uid://dm3gwad3cvw6h" path="res://Art/Sprites/light.png" id="6_qbvir"]
+[ext_resource type="Script" path="res://Scripts/LavaTickling.gd" id="7_otfif"]
+[ext_resource type="PackedScene" uid="uid://cx8w85v4j40ka" path="res://Scenes/cambio_camara.tscn" id="8_717ie"]
+
+[node name="Dungeon" type="Node2D"]
+y_sort_enabled = true
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_atxjs")
+format = 2
+layer_0/name = "Suelo"
+layer_0/tile_data = PackedInt32Array(65537, 196616, 3, 65538, 262152, 3, 65539, 262152, 3, 65540, 262152, 3, 131076, 262152, 4, 131075, 262152, 4, 131074, 262152, 4, 131073, 196616, 4, 196609, 196616, 4, 196610, 262152, 4, 196611, 262152, 4, 196612, 262152, 4, 131077, 327688, 4, 65541, 327688, 3, 262146, 262152, 4, 262147, 262152, 4, 262148, 262152, 4, 262149, 327688, 4, 196613, 262152, 4, 327683, 262152, 5, 327682, 262152, 5, 327684, 262152, 5, 327685, 327688, 5, 262143, 196608, 0, 196615, 196616, 4, -65533, 196608, 0, 458755, 196608, 0, 327681, 196616, 5, 262145, 196616, 4, 131079, 196616, 4, 65543, 196616, 4, 262151, 196616, 4, 327687, 196616, 4, 327686, 262152, 4, 262150, 262152, 4, 196614, 262152, 4, 131078, 262152, 4, 65542, 262152, 4, 262153, 262152, 4, 262154, 262152, 4, 262155, 262152, 4, 196619, 262152, 4, 131083, 262152, 4, 131082, 262152, 4, 131081, 262152, 4, 196617, 262152, 4, 196618, 262152, 4, 65545, 262152, 3, 65546, 262152, 3, 65547, 262152, 3, 65548, 327688, 3, 131084, 327688, 4, 196620, 327688, 4, 262156, 327688, 4, 327692, 327688, 5, 327691, 262152, 5, 327690, 262152, 5, 327689, 262152, 5, 327688, 196616, 5, 262152, 196616, 4, 131080, 196616, 4, 65544, 196616, 3, 196616, 262152, 4, 131089, 7, 0, 196625, 7, 1, 262161, 7, 2, 131090, 65543, 0, 196626, 65543, 1, 262162, 65543, 2, 131091, 131079, 0, 196627, 131079, 1, 262163, 131079, 2)
+layer_1/name = "Pared"
+layer_1/tile_data = PackedInt32Array(393217, 65544, 2, 393218, 65544, 2, 393219, 65544, 2, 393220, 65544, 2, 393221, 65544, 2, 262150, 131080, 1, 327686, 131080, 1, 196614, 131080, 4, 131078, 131080, 1, 65542, 131080, 1, 5, 65544, 0, 4, 65544, 0, 3, 65544, 0, 2, 65544, 0, 1, 65544, 0, 327680, 8, 1, 262144, 8, 1, 196608, 8, 1, 131072, 8, 1, 65536, 8, 1, 0, 8, 0, 393216, 8, 2, 393222, 131080, 2, 6, 131080, 0, 196615, 8, 4, 262151, 8, 1, 327687, 8, 1, 393223, 8, 2, 131079, 8, 1, 65543, 8, 1, 7, 8, 0, 8, 65544, 0, 9, 65544, 0, 10, 65544, 0, 11, 65544, 0, 12, 65544, 0, 13, 131080, 0, 65549, 131080, 1, 131085, 131080, 1, 196621, 131080, 1, 262157, 131080, 1, 327693, 131080, 1, 393229, 131080, 2, 393228, 65544, 2, 393227, 65544, 2, 393226, 65544, 2, 393225, 65544, 2, 393224, 65544, 2)
+layer_2/name = "Decoracion Suelo"
+layer_2/tile_data = PackedInt32Array(65538, 65537, 3, 327681, 131073, 3, 131076, 196609, 3, 3, 65538, 3)
+layer_3/name = "Decoracion Colision"
+layer_3/y_sort_enabled = true
+layer_3/tile_data = PackedInt32Array(131076, 131073, 2, 65540, 1, 1, 131077, 1, 2)
+
+[node name="Player" parent="." node_paths=PackedStringArray("target_salida", "target_antorcha", "target_botas") instance=ExtResource("1_y6f4q")]
+y_sort_enabled = true
+position = Vector2(157, 43)
+target_salida = NodePath("../Final")
+target_antorcha = NodePath("../Antorcha")
+target_botas = NodePath("../Botas")
+
+[node name="Antorcha" parent="." node_paths=PackedStringArray("player_component") instance=ExtResource("4_de0t0")]
+y_sort_enabled = true
+position = Vector2(279, 76)
+player_component = NodePath("../Player")
+
+[node name="Botas" parent="." node_paths=PackedStringArray("player_component") instance=ExtResource("3_owmoq")]
+y_sort_enabled = true
+position = Vector2(48, 92)
+player_component = NodePath("../Player")
+
+[node name="Final" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(490, -414)
+texture = ExtResource("4_umtw8")
+
+[node name="Oscuridad" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(583, 118)
+color = Color(1, 0.6675, 0.43, 1)
+texture = ExtResource("6_qbvir")
+texture_scale = 0.6
+script = ExtResource("7_otfif")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(3.45, 3.45)
+
+[node name="CambioCamara" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("8_717ie")]
+position = Vector2(-86, 162)
+player = NodePath("../Player")
+camera = NodePath("../Camera2D")

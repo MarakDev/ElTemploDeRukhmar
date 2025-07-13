@@ -1,0 +1,152 @@
+[gd_scene load_steps=14 format=3 uid="uid://bsb3tqbm5m6jh"]
+
+[ext_resource type="Texture2D" uid="uid://ct16og5vbhxt0" path="res://Art/Sprites/StoryFinalS.png" id="1_0njab"]
+[ext_resource type="Script" path="res://Scripts/OutroS.gd" id="1_rctfx"]
+[ext_resource type="AudioStream" uid="uid://ceenpcgxgoq8c" path="res://Art/Music/MÚSICA DEL DESIERTO.mp3" id="2_iar15"]
+[ext_resource type="FontFile" uid="uid://crq3g60na2e0c" path="res://Fonts/Minecraft.ttf" id="4_qrlfb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0aj1j"]
+atlas = ExtResource("1_0njab")
+region = Rect2(0, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78lxt"]
+atlas = ExtResource("1_0njab")
+region = Rect2(0, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uluf6"]
+atlas = ExtResource("1_0njab")
+region = Rect2(772, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6xac"]
+atlas = ExtResource("1_0njab")
+region = Rect2(1544, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nvgj"]
+atlas = ExtResource("1_0njab")
+region = Rect2(2316, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf5g2"]
+atlas = ExtResource("1_0njab")
+region = Rect2(3088, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s0cv"]
+atlas = ExtResource("1_0njab")
+region = Rect2(0, 0, 772, 772)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4jqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0aj1j")
+}, {
+"duration": 36.0,
+"texture": SubResource("AtlasTexture_78lxt")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_uluf6")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_k6xac")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_6nvgj")
+}, {
+"duration": 50.0,
+"texture": SubResource("AtlasTexture_lf5g2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s0cv")
+}],
+"loop": true,
+"name": &"tiempo",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0mahn"]
+font_size = 32
+
+[node name="Outro" type="Node2D"]
+script = ExtResource("1_rctfx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i4jqw")
+frame_progress = 0.339129
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_iar15")
+pitch_scale = 0.5
+autoplay = true
+
+[node name="Text" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -133.0
+offset_right = 156.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_qrlfb")
+text = "Tiempo Total:"
+label_settings = SubResource("LabelSettings_0mahn")
+horizontal_alignment = 1
+autowrap_mode = 3
+text_direction = 1
+
+[node name="Text2" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -86.0
+offset_right = 156.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_qrlfb")
+text = "23:00"
+label_settings = SubResource("LabelSettings_0mahn")
+horizontal_alignment = 1
+autowrap_mode = 3
+text_direction = 1
+
+[node name="Gracias" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -297.0
+offset_top = 35.0
+offset_right = 133.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.4, 1.4)
+size_flags_horizontal = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_qrlfb")
+text = "Gracias por jugar!"
+label_settings = SubResource("LabelSettings_0mahn")
+horizontal_alignment = 1
+autowrap_mode = 3
+text_direction = 1

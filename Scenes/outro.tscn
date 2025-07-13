@@ -1,0 +1,146 @@
+[gd_scene load_steps=13 format=3 uid="uid://ce256seyhj6gu"]
+
+[ext_resource type="Texture2D" uid="uid://c7kwd23khp3sb" path="res://Art/Sprites/StoryFinal.png" id="1_66e20"]
+[ext_resource type="Script" path="res://Scripts/Outro.gd" id="1_ftlpf"]
+[ext_resource type="AudioStream" uid="uid://ceenpcgxgoq8c" path="res://Art/Music/MÚSICA DEL DESIERTO.mp3" id="2_0h33i"]
+[ext_resource type="FontFile" uid="uid://crq3g60na2e0c" path="res://Fonts/Minecraft.ttf" id="4_28y6m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jofoh"]
+atlas = ExtResource("1_66e20")
+region = Rect2(0, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkn2f"]
+atlas = ExtResource("1_66e20")
+region = Rect2(772, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj5db"]
+atlas = ExtResource("1_66e20")
+region = Rect2(1544, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib0en"]
+atlas = ExtResource("1_66e20")
+region = Rect2(2316, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q1ah"]
+atlas = ExtResource("1_66e20")
+region = Rect2(3088, 0, 772, 772)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1xi7"]
+atlas = ExtResource("1_66e20")
+region = Rect2(0, 0, 772, 772)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qhxj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jofoh")
+}, {
+"duration": 16.0,
+"texture": SubResource("AtlasTexture_jofoh")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_nkn2f")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_hj5db")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_ib0en")
+}, {
+"duration": 50.0,
+"texture": SubResource("AtlasTexture_7q1ah")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1xi7")
+}],
+"loop": true,
+"name": &"tiempo",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ucfi"]
+font_size = 32
+
+[node name="Outro" type="Node2D"]
+script = ExtResource("1_ftlpf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7qhxj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0h33i")
+autoplay = true
+
+[node name="Text" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -133.0
+offset_right = 156.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_28y6m")
+text = "Tiempo Total:"
+label_settings = SubResource("LabelSettings_6ucfi")
+horizontal_alignment = 1
+autowrap_mode = 3
+text_direction = 1
+
+[node name="Text2" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -86.0
+offset_right = 156.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_28y6m")
+text = "23:00"
+label_settings = SubResource("LabelSettings_6ucfi")
+horizontal_alignment = 1
+autowrap_mode = 3
+text_direction = 1
+
+[node name="Gracias" type="Label" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -297.0
+offset_top = 35.0
+offset_right = 133.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.4, 1.4)
+size_flags_horizontal = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_28y6m")
+text = "Gracias por jugar!"
+label_settings = SubResource("LabelSettings_6ucfi")
+horizontal_alignment = 1
+autowrap_mode = 3
+text_direction = 1

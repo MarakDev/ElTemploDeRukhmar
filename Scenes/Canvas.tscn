@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4txp4184mn2r"]
+
+[ext_resource type="FontFile" uid="uid://crq3g60na2e0c" path="res://Fonts/Minecraft.ttf" id="1_is37u"]
+[ext_resource type="Script" path="res://Scripts/text_box.gd" id="1_kp0yw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bw3yy"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_mbjpg"]
+font_size = 32
+
+[node name="TextBox" type="CanvasLayer"]
+script = ExtResource("1_kp0yw")
+
+[node name="TextboxContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_top = 0.738342
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bw3yy")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="TextboxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Asterisco" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_is37u")
+text = "* "
+label_settings = SubResource("LabelSettings_mbjpg")
+
+[node name="Text" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_is37u")
+text = "kasdfa"
+label_settings = SubResource("LabelSettings_mbjpg")
+autowrap_mode = 3
+text_direction = 1
+
+[node name="Final" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_is37u")
+text = "v"
+label_settings = SubResource("LabelSettings_mbjpg")

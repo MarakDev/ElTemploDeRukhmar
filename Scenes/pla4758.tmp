@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvp2bami318lp"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_kgoe4"]
+[ext_resource type="SpriteFrames" uid="uid://c3mbt3i77hcs7" path="res://Art/SpriteSheets/idle.tres" id="2_kjp28"]
+[ext_resource type="Texture2D" uid="uid://c6s8kj3djv6fd" path="res://Art/Sprites/Particle.png" id="3_w7pr1"]
+[ext_resource type="Texture2D" uid="uid://dm3gwad3cvw6h" path="res://Art/Sprites/light.png" id="4_nbj25"]
+[ext_resource type="Script" path="res://Scripts/LightTickling.gd" id="5_si0pk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm0ck"]
+size = Vector2(10, 8)
+
+[sub_resource type="Curve" id="Curve_ca3r3"]
+_data = [Vector2(0, 0.32967), 0.0, -0.584884, 0, 0, Vector2(0.374233, 0.78022), 0.462247, 0.462247, 0, 0, Vector2(0.865031, 0.461538), 0.140671, 0.140671, 0, 0, Vector2(1, 0), 0.102943, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_08tie"]
+offsets = PackedFloat32Array(0.00740741, 0.12, 0.813333, 1)
+colors = PackedColorArray(0.395106, 0.120976, 0.508862, 0, 0.20617, 0.0233106, 0.424632, 1, 0.822193, 0.464553, 0.918468, 1, 0.643046, 0.386158, 0.884253, 0.443137)
+
+[sub_resource type="Curve" id="Curve_gfrsc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.993865, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("rayo_salida", "rayo_antorcha", "rayo_botas", "luzbrujula")]
+z_index = 200
+texture_filter = 1
+collision_layer = 3
+script = ExtResource("1_kgoe4")
+rayo_salida = NodePath("Rayo a la salida")
+rayo_antorcha = NodePath("Rayo a la antorcha")
+rayo_botas = NodePath("Rayo de las botas")
+luzbrujula = NodePath("luz brujula")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_sm0ck")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_kjp28")
+animation = &"side_walk"
+offset = Vector2(0, -11)
+
+[node name="Rayo a la salida" type="CPUParticles2D" parent="."]
+z_index = 500
+position = Vector2(0, -8.32)
+amount = 40
+lifetime = 0.8
+speed_scale = 0.35
+randomness = 0.21
+texture = ExtResource("3_w7pr1")
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, -350)
+angular_velocity_min = 149.12
+angular_velocity_max = 370.66
+angle_min = 276.4
+angle_max = 421.8
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_ca3r3")
+color = Color(0.808833, 0.63, 1, 1)
+color_ramp = SubResource("Gradient_08tie")
+hue_variation_max = 0.7
+
+[node name="Rayo a la antorcha" type="CPUParticles2D" parent="."]
+z_index = 500
+position = Vector2(0, -8.32)
+emitting = false
+amount = 40
+lifetime = 0.8
+speed_scale = 0.35
+randomness = 0.23
+texture = ExtResource("3_w7pr1")
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, -350)
+angular_velocity_min = 149.12
+angular_velocity_max = 360.0
+angle_min = 276.4
+angle_max = 421.8
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_ca3r3")
+color = Color(0.937987, 0.381872, 0.118511, 1)
+color_ramp = SubResource("Gradient_08tie")
+
+[node name="Rayo de las botas" type="CPUParticles2D" parent="."]
+z_index = 500
+position = Vector2(0, -8.32)
+emitting = false
+amount = 40
+lifetime = 0.8
+speed_scale = 0.35
+randomness = 0.26
+texture = ExtResource("3_w7pr1")
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(0, -350)
+angular_velocity_min = 149.12
+angular_velocity_max = 360.0
+angle_min = 276.4
+angle_max = 421.8
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_ca3r3")
+color = Color(0.29, 0.917167, 1, 1)
+color_ramp = SubResource("Gradient_08tie")
+
+[node name="Recall" type="CPUParticles2D" parent="."]
+z_index = 700
+position = Vector2(0, -9.61)
+emitting = false
+amount = 50
+lifetime = 0.6
+one_shot = true
+randomness = 0.51
+lifetime_randomness = 0.2
+texture = ExtResource("3_w7pr1")
+emission_shape = 1
+emission_sphere_radius = 1.85
+gravity = Vector2(0, 0)
+initial_velocity_min = 28.3
+initial_velocity_max = 28.3
+radial_accel_max = 28.57
+tangential_accel_max = 15.38
+angle_min = 276.4
+angle_max = 421.8
+scale_amount_min = 0.5
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_gfrsc")
+color = Color(0.731228, 0.962573, 0.934651, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 5
+y_sort_enabled = true
+position = Vector2(0, -11.555)
+enabled = false
+color = Color(0.974876, 0.513261, 0.274914, 1)
+texture = ExtResource("4_nbj25")
+texture_scale = 0.3
+script = ExtResource("5_si0pk")
+min_energy = 1.0
+max_energy = 2.0
+min_tam = 0.4
+max_tam = 0.5
+flicker_speed = 0.015
+
+[node name="luz brujula" type="PointLight2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("4_nbj25")
